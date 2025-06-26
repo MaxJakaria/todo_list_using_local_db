@@ -7,6 +7,7 @@ class TodoListView extends StatelessWidget {
   final void Function(Todo) onEdit;
   final void Function(String) onDelete;
   final void Function(String id, bool? isChecked) onToggleComplete;
+  final void Function(Todo) onTap;
 
   const TodoListView({
     super.key,
@@ -14,6 +15,7 @@ class TodoListView extends StatelessWidget {
     required this.onEdit,
     required this.onDelete,
     required this.onToggleComplete,
+    required this.onTap,
   });
 
   @override
@@ -30,6 +32,7 @@ class TodoListView extends StatelessWidget {
           onCheckboxChanged: (val) => onToggleComplete(todo.id, val),
           onEditPressed: () => onEdit(todo),
           onDeletePressed: () => onDelete(todo.id),
+          onTap: () => onTap(todo),
         );
       },
     );

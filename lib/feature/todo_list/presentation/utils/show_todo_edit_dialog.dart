@@ -20,6 +20,7 @@ Future<void> showTodoEditDialog({
               id: 'todoTitle',
               labelText: 'Title',
               initialValue: initialTitle,
+              isBlankError: true,
             ),
             TextFieldConfig(
               id: 'todoDetails',

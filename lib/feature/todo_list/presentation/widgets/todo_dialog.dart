@@ -28,6 +28,7 @@ class DynamicDialog extends StatefulWidget {
 
 class _DynamicDialogState extends State<DynamicDialog> {
   final Map<String, TextEditingController> _controllers = {};
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -43,29 +44,39 @@ class _DynamicDialogState extends State<DynamicDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title:
-          (widget.dialogTitle != null)
+          widget.dialogTitle != null
               ? Center(child: Text(widget.dialogTitle!))
               : null,
       titlePadding:
-          (widget.dialogTitle != null)
-              ? EdgeInsets.only(top: 15, bottom: 5)
-              : EdgeInsets.all(5),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (widget.message != null) Text(widget.message!),
-          ...widget.fields.map((config) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
-              child: TextField(
-                controller: _controllers[config.id],
-                decoration: InputDecoration(labelText: config.labelText),
-                maxLines: config.maxLines,
-                minLines: config.minLines,
-              ),
-            );
-          }),
-        ],
+          widget.dialogTitle != null
+              ? const EdgeInsets.only(top: 15, bottom: 5)
+              : const EdgeInsets.all(5),
+      content: Form(
+        key: _formKey,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (widget.message != null) Text(widget.message!),
+            ...widget.fields.map((config) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: TextFormField(
+                  controller: _controllers[config.id],
+                  decoration: InputDecoration(labelText: config.labelText),
+                  maxLines: config.maxLines,
+                  minLines: config.minLines,
+                  validator: (value) {
+                    if (config.isBlankError != null &&
+                        (value == null || value.trim().isEmpty)) {
+                      return 'Please enter ${config.labelText.toLowerCase()}';
+                    }
+                    return null;
+                  },
+                ),
+              );
+            }),
+          ],
+        ),
       ),
       actions: [
         DialogButton(
@@ -82,6 +93,8 @@ class _DynamicDialogState extends State<DynamicDialog> {
         DialogButton(
           text: widget.actionButtonText,
           onPressed: () {
+            if (!(_formKey.currentState?.validate() ?? false)) return;
+
             final result = <String, String>{};
             _controllers.forEach((id, controller) {
               result[id] = controller.text;

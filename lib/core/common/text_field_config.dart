@@ -4,6 +4,7 @@ class TextFieldConfig {
   final String? initialValue;
   final int? maxLines;
   final int minLines;
+  final bool? isBlankError;
 
   const TextFieldConfig({
     required this.id,
@@ -11,5 +12,6 @@ class TextFieldConfig {
     this.initialValue,
     this.maxLines = 1,
     this.minLines = 1,
+    this.isBlankError,
   });
 }

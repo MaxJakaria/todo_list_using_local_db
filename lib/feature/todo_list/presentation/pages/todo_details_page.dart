@@ -80,7 +80,7 @@ class _TodoDetailsPageState extends State<TodoDetailsPage> {
           if (_isEditing)
             IconButton(
               icon: const Icon(Icons.close),
-              color: Colors.red,
+              color: close,
               onPressed: _toggleEditing,
             ),
           IconButton(

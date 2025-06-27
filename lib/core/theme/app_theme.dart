@@ -24,11 +24,11 @@ ThemeData appTheme() {
 
     cardTheme: CardTheme(
       shape: BeveledRectangleBorder(side: BorderSide.none),
-      color: Colors.grey[200],
+      color: cardBackground,
     ),
 
     dialogTheme: DialogTheme(
-      backgroundColor: Colors.white.withAlpha(500),
+      backgroundColor: dialogBackground,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
       titleTextStyle: TextStyle(
         shadows: [Shadow(color: shadow, offset: Offset(0.5, 1), blurRadius: 4)],
@@ -40,11 +40,9 @@ ThemeData appTheme() {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.green),
-      ),
+      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: focused)),
       focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.red),
+        borderSide: BorderSide(color: focusedError),
       ),
     ),
 

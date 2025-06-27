@@ -68,7 +68,7 @@ class _DynamicDialogState extends State<DynamicDialog> {
                   validator: (value) {
                     if (config.isBlankError != null &&
                         (value == null || value.trim().isEmpty)) {
-                      return 'Please enter ${config.labelText.toLowerCase()}';
+                      return '${config.labelText} cann\'t be empty!';
                     }
                     return null;
                   },

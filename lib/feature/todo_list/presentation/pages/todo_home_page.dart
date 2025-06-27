@@ -40,10 +40,7 @@ class _TodoHomePageState extends State<TodoHomePage> {
 
             return TodoListView(
               onTap: (todo) {
-                Navigator.push(
-                  context,
-                  TodoDetailsPage.route(todo.title, todo.details),
-                );
+                Navigator.push(context, TodoDetailsPage.route(todo));
               },
               todos: state.todos,
               onEdit:

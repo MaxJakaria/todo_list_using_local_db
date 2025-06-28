@@ -22,12 +22,12 @@ ThemeData appTheme() {
       splashColor: pressbutton,
     ),
 
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       shape: BeveledRectangleBorder(side: BorderSide.none),
       color: cardBackground,
     ),
 
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       backgroundColor: dialogBackground,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
       titleTextStyle: TextStyle(

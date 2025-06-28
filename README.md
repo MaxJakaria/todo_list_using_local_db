@@ -6,7 +6,7 @@ A new **Flutter project** demonstrating a ToDo List app.
 
 ## 🚀 Getting Started
 
-This project initially used a simple `List` in Dart to store tasks as a temporary in-memory database.
+This project [initially used a simple `List`](https://github.com/MaxJakaria/todo_list_using_local_db/tree/f9fc0be2c6ce9c55e8166c03e6027fc5cbaebd89) in Dart to store tasks as a temporary in-memory database.
 
 Before integrating **Isar** (a high-performance local NoSQL database), follow the steps below to prepare your project.
 
